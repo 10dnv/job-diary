@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-    Welcome to job diary
+    <h1 className="text-red-600">Welcome to job diary</h1>
     </>
   );
 }
