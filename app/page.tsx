@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Welcome from "./components/Welcome"
 
 export default function Home() {
   return (
     <>
-    <h1 className="text-red-600">Welcome to job diary</h1>
+    <Welcome/>
     </>
   );
 }
