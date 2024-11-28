@@ -3,6 +3,12 @@ import React, { useState } from 'react'
 
 function dashboard() {
     const [jobApplicationList, setJobApplicationList] = useState([]);
+    const [selectedJobApplicationId, setSelectedJobApplicationId] = useState(-1);
+    
+    const handleSelectedJobAppl =(id:number)=>{
+        setSelectedJobApplicationId(id);
+    };
+
     const application_db = [
         {
             id:0,
@@ -70,15 +76,15 @@ function dashboard() {
                 {/* Add menu buttons for current application */}
                 <div className='application-column-buttons flex justify-between py-5'>
                     <button className='btn btn-sm btn-primary btn-outline'>+</button>
-                    <button className={jobApplicationList.length?'btn btn-sm btn-primary btn-outline':'btn btn-sm btn-primary btn-outline btn-disabled'}>E</button>
-                    <button className={jobApplicationList.length?'btn btn-sm btn-primary btn-outline':'btn btn-sm btn-primary btn-outline btn-disabled'}>X</button>
+                    <button className={selectedJobApplicationId>=0?'btn btn-sm btn-primary btn-outline':'btn btn-sm btn-primary btn-outline btn-disabled'}>E</button>
+                    <button className={selectedJobApplicationId>=0?'btn btn-sm btn-primary btn-outline':'btn btn-sm btn-primary btn-outline btn-disabled'}>X</button>
                 </div>
                 
                 
                 <ul className='my-3'>
                     {
-                        application_db.map((data)=>(
-                            <li key={data.id} className="hover:bg-secondary hover:text-secondary-content bg-primary text-primary-content my-3">
+                        application_db.length?application_db.map((data)=>(
+                            <li key={data.id} className={selectedJobApplicationId==data.id?"bg-secondary text-secondary-content":"hover:bg-secondary hover:text-secondary-content bg-primary text-primary-content my-3"}  onClick={()=>handleSelectedJobAppl(data.id)}>
                             <div className="card-body">
                                 <h2 className="card-title">{data.job_title}</h2>
                                 <p>{data.company_name}</p>
@@ -87,7 +93,7 @@ function dashboard() {
                                 </div>
                             </div>
                         </li>
-                        ))
+                        )):<h1>No job applications yet</h1>
                     }
                 </ul>
             </div>
