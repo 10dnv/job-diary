@@ -17,3 +17,17 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure html and body occupy full height */
+  display: flex; /* Use flexbox for better alignment if needed */
+  flex-direction: column;
+}
+
+.layout {
+  height: 100%; /* Ensures the layout spans the full height */
+  display: flex; /* Optional: Add flexbox for inner content alignment */
+  flex-direction: column; /* Stack children vertically */
+}

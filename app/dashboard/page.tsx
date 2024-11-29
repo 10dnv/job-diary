@@ -30,9 +30,29 @@ function dashboard() {
 
             }]
         },
-
         {
             id:1,
+            job_title: "Fullstack developer",
+            creation_date:"03-11-2024",
+            company_name:"TechCruise ",
+            external_url:"https://www.techcruise.com",
+            sessions:[{
+                session_id:0,
+                session_type:"done", //done, planned, canceled
+                session_name:"Initial call",
+                session_date:"01-11-2024",
+                session_info:[{
+                    recruiter_name:"Olga Marin",
+                    recruiter_phone:"+49012345678",
+                    recruiter_email:"olga.marin@intel.com",
+                    recruiter_linkedin:"https://www.linkedin.com/olga+marin",
+                }]
+
+            }]
+        },
+
+        {
+            id:2,
             job_title: "Embedded Engineer",
             creation_date:"27-10-2024",
             company_name:"NTT Data Romania",
@@ -67,16 +87,15 @@ function dashboard() {
     ];
 
   return (
-    <div className='bg-base-100 flex-1 text-base-content px-4 py-6 h-full'>
-        <div className='content grid grid-cols-6'>
+    <div className='bg-gray-100 text-base-content px-4 py-6 flex layout'>
+        <div className='content grid grid-cols-6 h-full'>
 
             <div className='col-span-1 text-center'>
                 <span className='text-accent text-xl font-semibold'>Job application</span>
 
                 {/* Add menu buttons for current application */}
-                <div className='application-column-buttons flex justify-between py-5'>
+                <div className='application-column-buttons flex justify-around py-5'>
                     <button className='btn btn-sm btn-primary btn-outline'>+</button>
-                    <button className={selectedJobApplicationId>=0?'btn btn-sm btn-primary btn-outline':'btn btn-sm btn-primary btn-outline btn-disabled'}>E</button>
                     <button className={selectedJobApplicationId>=0?'btn btn-sm btn-primary btn-outline':'btn btn-sm btn-primary btn-outline btn-disabled'}>X</button>
                 </div>
                 
@@ -84,7 +103,7 @@ function dashboard() {
                 <ul className='my-3'>
                     {
                         application_db.length?application_db.map((data)=>(
-                            <li key={data.id} className={selectedJobApplicationId==data.id?"bg-secondary text-secondary-content":"hover:bg-secondary hover:text-secondary-content bg-primary text-primary-content my-3"}  onClick={()=>handleSelectedJobAppl(data.id)}>
+                            <li key={data.id} className={selectedJobApplicationId==data.id?"bg-white text-secondary-content border-r-0 border-l-primary border-l-8 ":"hover:bg-primary hover:text-secondary-content bg-gray-300 text-primary-content my-3 w-[97%]"}  onClick={()=>handleSelectedJobAppl(data.id)}>
                             <div className="card-body">
                                 <h2 className="card-title">{data.job_title}</h2>
                                 <p>{data.company_name}</p>
@@ -98,12 +117,12 @@ function dashboard() {
                 </ul>
             </div>
 
-            <div className='col-span-2 text-center'>
-                <span className='text-accent text-xl font-semibold'>Session</span>
+            <div className='col-span-5 text-center bg-white'>
+                {/* <span className='text-accent text-xl font-semibold'>Session</span>
             </div>
 
             <div className='col-span-3 text-center'>
-                <span className='text-accent text-xl font-semibold'>Details</span>
+                <span className='text-accent text-xl font-semibold'>Details</span> */}
             </div>
 
     </div>
